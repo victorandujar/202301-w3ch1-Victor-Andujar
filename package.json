@@ -2,7 +2,7 @@
   "name": "202301-w3ch1-victor-andujar",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "default": "index.js",
   "scripts": {
     "prebuild": "rimraf dist/",
     "build:dev": "parcel src/index.html",
