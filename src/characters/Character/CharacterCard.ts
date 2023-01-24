@@ -1,13 +1,14 @@
-type CharacterCardStructure = {
+interface CharacterCardStructure {
   element: Element;
-};
+}
 
-class CharacterCard {
+class CharacterCard implements CharacterCardStructure {
   element: Element;
 
-  constructor(parentElement: Element) {
+  constructor(parentElement: Element, className: "string") {
     this.element = document.createElement("article");
-    parentElement.appendChild(this.element);
+    this.element.className = className;
+    parentElement.querySelector(".card")?.appendChild(this.element);
   }
 }
 

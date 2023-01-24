@@ -1,35 +1,35 @@
 import type { Character } from "../Character/Character";
 import type { Fighter } from "../Fighter/Fighter";
 
-export type CharacterDataStructure = {
+export interface CharacterDataStructure {
   name: string;
   family: string;
   age: number;
   imageSource: string;
-};
+}
 
-export type CharacterStructure = {
+export interface CharacterStructure {
   characterData: CharacterDataStructure;
   isAlive: boolean;
   series: string;
   communicate: () => string;
   die: () => void;
-};
+}
 
-export type KingStructure = {
+export interface KingStructure extends CharacterStructure {
   yearsOfReign: number;
-} & CharacterStructure;
+}
 
-export type FighterStructure = {
+export interface FighterStructure extends CharacterStructure {
   weapon: string;
   dexterity: number;
-} & CharacterStructure;
+}
 
-export type SquireStructure = {
+export interface SquireStructure extends CharacterStructure {
   serves: Fighter;
   kissAssLevel: number;
-} & CharacterStructure;
+}
 
-export type AdvisorStructre = {
+export interface AdvisorStructre extends CharacterStructure {
   advises: Character;
-} & CharacterStructure;
+}
