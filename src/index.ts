@@ -2,7 +2,7 @@ import { Advisor } from "./characters/Advisor/Advisor";
 import { Fighter } from "./characters/Fighter/Fighter";
 import { King } from "./characters/King/King";
 import { Squire } from "./characters/Squire/Squire";
-import ComponentCard from "./components/ComponentCard/ComponentCard";
+import Component from "./components/ComponentCard/ComponentCard";
 
 import type {
   AdvisorStructre,
@@ -56,9 +56,17 @@ export const bronn: Squire = new Squire(bronnData, 0, jaime);
 
 export const characters = [jaime, joffrey, daenerys, tyrion, bronn];
 
-const app = document.querySelector(".app")!;
-const newCard = new ComponentCard(
-  app,
-  "ul",
-  "characters-list row list-unstyled"
-);
+const listGenerator = () => {
+  const app = document.querySelector(".app")!;
+  const ulListItem: HTMLUListElement = document.createElement("ul");
+  ulListItem.className = "characters-list row list-unstyled";
+  app.appendChild(ulListItem);
+  const liListItem: HTMLLIElement = document.createElement("li");
+
+  for (let i = 0; i < 5; i++) {
+    ulListItem.appendChild(liListItem);
+    ulListItem.className = "character col";
+  }
+};
+
+listGenerator();
