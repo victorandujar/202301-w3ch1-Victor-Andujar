@@ -12,6 +12,7 @@ import type {
   KingStructure,
   SquireStructure,
 } from "./characters/types/types";
+import { Character } from "./characters/Character/Character";
 
 const joffreyData: CharacterDataStructure = {
   name: "Joffrey",
@@ -61,11 +62,17 @@ const listGenerator = () => {
   const ulListItem: HTMLUListElement = document.createElement("ul");
   ulListItem.className = "characters-list row list-unstyled";
   app.appendChild(ulListItem);
-  const liListItem: HTMLLIElement = document.createElement("li");
 
   for (let i = 0; i < 5; i++) {
+    const liListItem: HTMLLIElement = document.createElement("li");
     ulListItem.appendChild(liListItem);
     ulListItem.className = "character col";
+    const card = new Component(
+      liListItem,
+      "div",
+      "characters-list row list-unstyled",
+      characters[i]
+    );
   }
 };
 
