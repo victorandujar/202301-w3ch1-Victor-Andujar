@@ -1,22 +1,31 @@
+import { type Character } from "../../characters/Character/Character";
+
 export interface ComponentStructure {
   element: Element;
 }
 
 class Component implements ComponentStructure {
   element: Element;
+  character: Character;
 
-  constructor(parentElement: Element, tagName: string, className: string) {
+  constructor(
+    parentElement: Element,
+    tagName: string,
+    className: string,
+    character: Character
+  ) {
     this.element = document.createElement(tagName);
     this.element.className = className;
     parentElement.appendChild(this.element);
 
+    this.character = character;
     this.render();
   }
 
   render() {
     this.element.innerHTML = `
         <div class="card character__card">
-          <img src="img/no-one.jpg" alt="Character's Name and family" class="character__picture card-img-top" />
+          <img src="img/no-one.jpg" alt="${this.character.characterData.name} and ${this.character.characterData.family}" class="character__picture card-img-top" />
           <div class="card-body">
             <h2 class="character__name card-title h4">Name & family</h2>
             <div class="character__info">
